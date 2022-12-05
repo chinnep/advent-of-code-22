@@ -2,7 +2,7 @@ const sumPriorityItems = require('./sumPriorityItems')
 
 const exampleData = 'example-data.txt'
 
-describe('find score if following strategy', () => {
+describe('find priority scores', () => {
     it('should have a priority of 157', async() => {
         const actual = sumPriorityItems(exampleData)
 

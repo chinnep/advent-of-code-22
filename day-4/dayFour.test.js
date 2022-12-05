@@ -2,7 +2,7 @@ const duplicateCleanup = require('./duplicateCleanup')
 
 const exampleData = 'example-data.txt'
 
-describe('find score if following strategy', () => {
+describe('find overlapping section work', () => {
     it ('should have 2 pairs of elves where one elf is entirely doing work that is already assigned', async() => {
         const actual = duplicateCleanup(exampleData)
 
