@@ -1,11 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 
-exports = module.exports = (file) => {
+exports = module.exports = (file, findFirstMessageMarker = false) => {
   const input = fs.readFileSync(path.resolve(__dirname, `./${file}`), 'utf-8')
 
   let marker = []
-  let part1 = 0
+  const lengthOfMarker = findFirstMessageMarker ? 14 : 4
 
   for ( const [index, char] of [...input].entries()) {
     const oldCharIndex = marker.findIndex(val => val === char)
@@ -13,7 +13,6 @@ exports = module.exports = (file) => {
     if (oldCharIndex > -1) marker = marker.slice(oldCharIndex + 1)
     marker.push(char)
     
-    if (marker.length === 4) return part1 = index + 1
+    if (marker.length === lengthOfMarker) return index + 1
   }
-  return part1
 }

@@ -8,4 +8,10 @@ describe('find first marker to read faulty signal', () => {
 
         expect(actual).toEqual(11)
     })
+
+    it ('should find first start of message marker', async() => {
+        const actual = findMarker(exampleData, true)
+
+        expect(actual).toEqual(26)
+    })
 })

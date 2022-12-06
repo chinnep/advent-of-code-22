@@ -16,26 +16,25 @@ exports = module.exports = (file, calcGroupsofThree = false) => {
       const compartmentA = rucksack.slice(0, splitPoint)
       const compartmentB = rucksack.slice(splitPoint)
 
-      const priorityItem = [...compartmentA].find(item =>
-        [...compartmentB].findIndex(b => b === item) > -1)
+      const priorityItem = [...compartmentA].find(item => [...compartmentB].includes(item))
 
       return map.findIndex(item => item === priorityItem) + 1 // add one since we index at zero
     })
     .reduce((sum, priority) => sum + priority, 0)
 
-    let badgeStack = []
+    let badgeArray = []
     
     const part2 = input
     .map((rucksack, index) => {
       const i = index + 1
 
-      if (i % 3 === 1) badgeStack = [...rucksack]
+      if (i % 3 === 1) badgeArray = [...rucksack]
       else {
-        badgeStack = badgeStack.filter(item => [...rucksack].findIndex(x => x === item) > -1)
+        badgeArray = badgeArray.filter(item => rucksack.includes(item))
       }
       
       // end of one group
-      if (i % 3 === 0) return map.findIndex(item => item === badgeStack[0]) + 1
+      if (i % 3 === 0) return map.findIndex(item => item === badgeArray[0]) + 1
   
       return 0
     })
