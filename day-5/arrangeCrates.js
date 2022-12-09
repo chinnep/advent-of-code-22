@@ -26,14 +26,11 @@ exports = module.exports = ({ file, usingRealData = false, versionIs9001 = false
     .split('\n')
     .map(el => el.replace('\r', ''))
 
-    input
-    .map(step => {
+    input.map(step => {
       // a, b, and c are the words between numbers
       const [a, numOfCratesToMove, b, start, c, end] = [...step.split(' ')]
 
-      for (let i = 0; i < numOfCratesToMove; i++) {
-        stacks[end].push(stacks[start].pop())
-      }
+      for (let i = 0; i < numOfCratesToMove; i++) stacks[end].push(stacks[start].pop())
     })
 
     let part1 = ''
@@ -42,10 +39,10 @@ exports = module.exports = ({ file, usingRealData = false, versionIs9001 = false
     // reset the stacks
     stacks = getStacks(usingRealData)
 
-    input
-    .map(step => {
+    input.map(step => {
       // a, b, and c are the words between numbers
       const [a, numOfCratesToMove, b, start, c, end] = [...step.split(' ')]
+
       // Remove crates from starting stack
       const cratesBeingMoved = stacks[start].splice(-numOfCratesToMove)
 
