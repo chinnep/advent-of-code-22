@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-exports = module.exports = (file, findFirstMessageMarker = false) => {
+exports = module.exports = (file) => {
   // Set initial state
   var grid = Array(1000).fill(null).map(() => Array(1000).fill(0))
   let head = [500, 500]
